@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+<!-- I want to do is load bootstrap _tags
+this will enable us to basically import the bootstrap tags  -->
+{% load bootstrap_tags %}
+
+{% block page_title %}login page{% endblock %}
+
+{% block page_heading %}User Login{% endblock %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <!-- instead of .as_p what we want to say is | as_bootstrap so this will take the form and pass it into the 
+    as_bootstrap function which will basically give it all that nice bootstrap look -->
+    {{ login_form | as_bootstrap }}
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+<p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+{% endblock %}
